@@ -1,42 +1,78 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Examples</title>
+    <title>idarkfox</title>
     <script language="javascript" src="/public/javascripts/examples-head.js"></script>
 </head>
 <body>
 
 	<hr />
-	<h2>2013-12-24 18:15</h2>
-	<h1>模板规则定义</h1>
+	<h3>2013-12-24 18:15</h3>
+	<h2>模板规则定义草案</h2>
 	<div>
 		<pre id="code_echo" name="code" class="js">
-/**
- *
- * [(n)&lt;t{a|b|c|...}h>&lt;s>][remark]
- *
- *  &lt;s> Binary [00000111]
- *
- *  bit 			description
- *  ---------------------------------------------------------------
- *  0.Replace       Default : true
- *                      If false: no replacement occurs
- *
- *  1.Sign          Default : true
- *                      Level:low
- *                      If n =  2 => start -> abc -> abc -> end
- *                      If n = -2 => start -> aa -> bb -> cc -> end
- *                      If false => n = |n|
- *
- *  2.Serial        Default : true
- *                      Level:high
- *                      If n = 2 => start -> abc -> abc -> end
- *                      If false => n = -|n| ;
- *                      serial_level > sign_level
- *
- *  3.Others        Unused
- *
-**/
+	/**
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     * Excuse me that my English isn't very good.
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *
+     * [(n)&lt;t{a:x:y|b|c|...}h>&lt;s>][remark]
+     *
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *
+     *  &lt;n>
+     *  Loop count, repeat n
+     *
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *
+     *  &lt;t>
+     *  Template, template for use in a processor
+     *
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *
+     *  &lt;a:x:y|b|c|...>
+     *  Items: a|b|c Is a data packet for replacement
+     *  example:{html|css|function}
+     *
+     *  Items: a:x:y
+     *  x: name or Lambda expression
+     *  y: Execution times
+     *
+     *  Lambda expression:
+     *  Predefined Lambda is not implemented.
+     *  If use Lambda then Lexical analysis ignores "y"
+     *  Form: =>expr;
+     *  expr: JavaScript expression.
+     *  example:
+     *        1.    =>packet[name][n]
+     *        2.    =>Math.pow(2,n)
+     *        3.    =>
+     *
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *
+     *  &lt;s>
+     *  Strategy: switch hex value. bit [00000111].
+     *
+     *  bit             description
+     *  ---------------------------------------------------------------
+     *  0.Replace       Default : true
+     *                      If false: no replacement occurs
+     *
+     *  1.Sign          Default : true
+     *                      Level:low
+     *                      If n =  2 => start -> abc -> abc -> end
+     *                      If n = -2 => start -> aa -> bb -> cc -> end
+     *                      If false => n = |n|
+     *
+     *  2.Serial        Default : true
+     *                      Level:high
+     *                      If n = 2 => start -> abc -> abc -> end
+     *                      If false => n = -|n| ;
+     *                      serial_level > sign_level
+     *
+     *  3.Others        Unused
+     *
+     **/
 		</pre>
 	</div>
 
