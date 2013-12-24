@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Examples</title>
+    <script language="javascript" src="/javascripts/examples-head.js"></script>
+</head>
+<body>
+
+	<hr />
+	<h2>2013-12-24 18:15</h2>
+	<h1>模板规则定义</h1>
+	<div>
+		<pre id="code_echo" name="code" class="js">
+/**
+ *
+ * [(n)<t{a|b|c|...}h><s>][remark]
+ *
+ *  0.Replace       Default : true
+ *                      If false: no replacement occurs
+ *
+ *  1.Sign          Default : true
+ *                      Level:low
+ *                      If n =  2 => start -> abc -> abc -> end
+ *                      If n = -2 => start -> aa -> bb -> cc -> end
+ *                      If false => n = |n|
+ *
+ *  2.Serial        Default : true
+ *                      Level:high
+ *                      If n = 2 => start -> abc -> abc -> end
+ *                      If false => n = -|n| ;
+ *                      serial_level > sign_level
+ *
+ *  3.Others        Unused
+ *
+**/
+		</pre>
+	</div>
+
+</body>
+</html>
