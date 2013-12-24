@@ -13,8 +13,12 @@
 		<pre id="code_echo" name="code" class="js">
 /**
  *
- * [(n)<t{a|b|c|...}h><s>][remark]
+ * [(n)&lt;t{a|b|c|...}h>&lt;s>][remark]
  *
+ *  &lt;s> Binary [00000111]
+ *
+ *  bit 			description
+ *  ---------------------------------------------------------------
  *  0.Replace       Default : true
  *                      If false: no replacement occurs
  *
@@ -37,7 +41,7 @@
 	</div>
 
 <script type="text/javascript">
-	dp.SyntaxHighlighter.ClipboardSwf = '/flash/clipboard.swf';
+    dp.SyntaxHighlighter.ClipboardSwf = '/flash/clipboard.swf';
     dp.SyntaxHighlighter.HighlightAll('code');
 </script>
 </body>
