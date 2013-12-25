@@ -18,7 +18,7 @@
 	<h2>模板规则定义草案</h2>
 	<div>
 		<pre id="code_echo" name="code" class="js">
-	/**
+    /**
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      * Excuse me that my English isn't very good.
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -39,21 +39,27 @@
      *
      *  &lt;a:x:y|b|c|...>
      *  Items: a|b|c Is a data packet for replacement
-     *  example:{html|css|function}
+     *      example:    {html|css|function}
      *
-     *  Items: a:x:y
-     *  x: name or Lambda expression
+     *  Items can be a character string or a numeric value of type NUMBER.
+     *      example:    {0|1:1|2:10:5}
+     *
+     *  Item: a:x:y
+     *  x: name/number
      *  y: Execution times
+     *
+     *  Focus: It can be Lambda expression
      *
      *  Lambda expression:
      *  Predefined Lambda is not implemented.
-     *  If use Lambda then Lexical analysis ignores "y"
+     *  If use Lambda then lexical analysis ignores "x" and "y"
      *  Form: =>expr;
      *  expr: JavaScript expression.
      *  example:
      *        1.    =>packet[name][n]
      *        2.    =>Math.pow(2,n)
-     *        3.    =>
+     *        {=>packet[name][n]}
+     *        {=>packet[name](n)}
      *
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      *
@@ -63,6 +69,7 @@
      *  bit             description
      *  ---------------------------------------------------------------
      *  0.Replace       Default : true
+     *                      Level : Top
      *                      If false: no replacement occurs
      *
      *  1.Sign          Default : true
