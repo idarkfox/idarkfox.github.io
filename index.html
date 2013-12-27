@@ -14,7 +14,7 @@
 	<br/>
 	<br/>
 	<hr />
-	<h3>2013-12-24 18:15       最后修改时间:2013-12-25 14:57 </h3>
+	<h3>2013-12-24 18:15       最后修改时间:2013-12-27 12:24 </h3>
 	<h2>模板规则定义草案</h2>
 	<div>
 		<pre id="code_echo" name="code" class="js">
@@ -23,12 +23,12 @@
      * Excuse me that my English isn't very good.
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      *
-     * [(n)&lt;t{a:x:y|b|c|...}h>&lt;s>][remark]
+     * [(n)&lt;t{a:x:y},{b},{c...}r>&lt;s>][remark]
      *
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      *
      *  &lt;n>
-     *  Loop count, repeat n
+     *  Loop count, loop executes n times
      *
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      *
@@ -37,16 +37,21 @@
      *
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      *
-     *  &lt;a:x:y|b|c|...>
+     *  &lt;r>
+     *  default number for "y"
+     *
+     * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+     *
+     *  &lt;{a:x:y},{b},{c}...>
      *  Items: a|b|c Is a data packet for replacement
-     *      example:    {html|css|function}
+     *      example:    {html},{css},{function}
      *
      *  Items can be a character string or a numeric value of type NUMBER.
-     *      example:    {0|1:1|2:10:5}
+     *      example:    {0},{1:1},{2:10:5}
      *
      *  Item: a:x:y
      *  x: name/number
-     *  y: Execution times
+     *  y: total number for print
      *
      *  Focus: It can be Lambda expression
      *
@@ -56,15 +61,14 @@
      *  Form: =>expr;
      *  expr: JavaScript expression.
      *  example:
-     *        1.    =>packet[name][n]
-     *        2.    =>Math.pow(2,n)
-     *        {=>packet[name][n]}
-     *        {=>packet[name](n)}
+     *        1.    {=>packet[name][n]}
+     *        2.    {=>Math.pow(2,n)}
+     *        3.    {=>packet[name](n)}
      *
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      *
      *  &lt;s>
-     *  Strategy: switch hex value. bit [00000111].
+     *  Strategy: number value. bit [00000111].
      *
      *  bit             description
      *  ---------------------------------------------------------------
@@ -74,15 +78,12 @@
      *
      *  1.Sign          Default : true
      *                      Level:low
-     *                      If n =  2 => start -> abc -> abc -> end
+     *                      If n =  2 => start -> abc -> abc -> end (is serial)
      *                      If n = -2 => start -> aa -> bb -> cc -> end
      *                      If false => n = |n|
      *
-     *  2.Serial        Default : true
-     *                      Level:high
-     *                      If n = 2 => start -> abc -> abc -> end
-     *                      If false => n = -|n| ;
-     *                      serial_level > sign_level
+     *  2.Debug         Default : true
+     *                      report error text
      *
      *  3.Others        Unused
      *
