@@ -56,14 +56,13 @@
      *  Focus: It can be Lambda expression
      *
      *  Lambda expression:
-     *  Predefined Lambda is not implemented.
      *  If use Lambda then lexical analysis ignores "x" and "y"
      *  Form: =>expr;
      *  expr: JavaScript expression.
      *  example:
-     *        1.    {=>packet[name][n]}
+     *        1.    {=>context.packet[name][n]}
      *        2.    {=>Math.pow(2,n)}
-     *        3.    {=>packet[name](n)}
+     *        3.    {=>context.packet[name](n)}
      *
      * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
      *
